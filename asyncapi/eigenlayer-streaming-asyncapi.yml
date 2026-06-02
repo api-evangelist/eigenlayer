@@ -1,0 +1,152 @@
+asyncapi: 3.0.0
+info:
+  title: EigenDA Streaming Surface
+  version: '1.0'
+  description: >-
+    Bidirectional gRPC streaming surface exposed by the EigenDA v1 Disperser.
+    EigenDA is the data-availability service secured by EigenLayer restakers;
+    the Disperser is the consumer-facing entry point used by rollups and other
+    blob producers to post data into EigenDA. Of the public Disperser RPCs,
+    only DisperseBlobAuthenticated is a streaming RPC - it is a bidirectional
+    stream that implements a sign-and-verify handshake before the disperser
+    accepts a blob. The other v1 Disperser RPCs (DisperseBlob, GetBlobStatus,
+    RetrieveBlob) are unary and not modeled here. The v2 Disperser, the Relay
+    service, and the Node service are marked Experimental in the EigenDA proto
+    README and the project states they are not deployed to any public
+    environment, so they are not modeled here either. The Retriever service is
+    documented as primarily for operator/internal retrieval paths and exposes
+    only unary RPCs.
+  contact:
+    name: EigenDA
+    url: https://docs.eigencloud.xyz/products/eigenda/
+servers:
+  mainnet:
+    host: disperser.eigenda.xyz:443
+    protocol: grpc
+    description: EigenDA mainnet Disperser gRPC endpoint (TLS).
+  sepolia:
+    host: disperser-testnet-sepolia.eigenda.xyz:443
+    protocol: grpc
+    description: EigenDA Sepolia testnet Disperser gRPC endpoint (TLS).
+  hoodi:
+    host: disperser-testnet-hoodi.eigenda.xyz:443
+    protocol: grpc
+    description: EigenDA Hoodi testnet Disperser gRPC endpoint (TLS).
+channels:
+  disperseBlobAuthenticated:
+    address: disperser.Disperser/DisperseBlobAuthenticated
+    description: >-
+      Bidirectional streaming gRPC method. The client opens the stream with a
+      DisperseBlobRequest, the disperser replies with a BlobAuthHeader
+      containing a challenge parameter, the client signs and returns an
+      AuthenticationData message, and the disperser closes by sending a
+      DisperseBlobReply with the assigned request_id.
+    messages:
+      authenticatedRequest:
+        $ref: '#/components/messages/AuthenticatedRequest'
+      authenticatedReply:
+        $ref: '#/components/messages/AuthenticatedReply'
+operations:
+  sendAuthenticatedRequest:
+    action: send
+    channel:
+      $ref: '#/channels/disperseBlobAuthenticated'
+    summary: Client-to-disperser frames on the DisperseBlobAuthenticated stream.
+    messages:
+      - $ref: '#/channels/disperseBlobAuthenticated/messages/authenticatedRequest'
+  receiveAuthenticatedReply:
+    action: receive
+    channel:
+      $ref: '#/channels/disperseBlobAuthenticated'
+    summary: Disperser-to-client frames on the DisperseBlobAuthenticated stream.
+    messages:
+      - $ref: '#/channels/disperseBlobAuthenticated/messages/authenticatedReply'
+components:
+  messages:
+    AuthenticatedRequest:
+      name: AuthenticatedRequest
+      title: AuthenticatedRequest
+      summary: Client frame on the DisperseBlobAuthenticated stream.
+      payload:
+        type: object
+        description: >-
+          Oneof payload - either the initial DisperseBlobRequest or the signed
+          AuthenticationData returned in response to the BlobAuthHeader
+          challenge.
+        properties:
+          disperse_request:
+            $ref: '#/components/schemas/DisperseBlobRequest'
+          authentication_data:
+            $ref: '#/components/schemas/AuthenticationData'
+    AuthenticatedReply:
+      name: AuthenticatedReply
+      title: AuthenticatedReply
+      summary: Disperser frame on the DisperseBlobAuthenticated stream.
+      payload:
+        type: object
+        description: >-
+          Oneof payload - either a BlobAuthHeader challenge or the final
+          DisperseBlobReply with the assigned request_id.
+        properties:
+          blob_auth_header:
+            $ref: '#/components/schemas/BlobAuthHeader'
+          disperse_reply:
+            $ref: '#/components/schemas/DisperseBlobReply'
+  schemas:
+    DisperseBlobRequest:
+      type: object
+      properties:
+        data:
+          type: string
+          format: byte
+          description: >-
+            Blob payload, up to 16 MiB. Every 32 bytes is interpreted as a
+            big-endian bn254 field element and must be within the curve order.
+        custom_quorum_numbers:
+          type: array
+          items:
+            type: integer
+            format: uint32
+          description: >-
+            Optional custom quorums in addition to the required quorums
+            configured on the EigenDA contract.
+        account_id:
+          type: string
+          description: >-
+            Hex-encoded ECDSA public key of the client, used to verify the
+            signature returned in AuthenticationData.
+    BlobAuthHeader:
+      type: object
+      properties:
+        challenge_parameter:
+          type: integer
+          format: uint32
+          description: >-
+            Replay-resistance challenge that the client must sign. In a future
+            release this header will also carry the KZG commitment of the blob.
+    AuthenticationData:
+      type: object
+      properties:
+        authentication_data:
+          type: string
+          format: byte
+          description: Client signature over the BlobAuthHeader.
+    DisperseBlobReply:
+      type: object
+      properties:
+        result:
+          type: string
+          enum:
+            - UNKNOWN
+            - PROCESSING
+            - CONFIRMED
+            - FAILED
+            - FINALIZED
+            - INSUFFICIENT_SIGNATURES
+            - DISPERSING
+          description: BlobStatus enum value. Always PROCESSING on initial accept.
+        request_id:
+          type: string
+          format: byte
+          description: >-
+            Disperser-assigned blob key the client uses to poll GetBlobStatus.

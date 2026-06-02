@@ -21,7 +21,7 @@ tags:
   - Crypto
   - Web3
 created: '2026-05-23'
-modified: '2026-05-23'
+modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
   - aid: eigenlayer:eigenlayer-contracts
@@ -107,6 +107,8 @@ apis:
         url: https://github.com/Layr-Labs/eigenda
       - type: Documentation
         url: https://docs.eigencloud.xyz/products/eigenda/
+      - type: AsyncAPI
+        url: asyncapi/eigenlayer-streaming-asyncapi.yml
   - aid: eigenlayer:eigencompute
     name: EigenCompute SDK & CLI
     description: >-
