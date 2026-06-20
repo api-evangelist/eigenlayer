@@ -11,7 +11,7 @@ description: >-
   inference) under the EigenCloud brand. Developer surface includes the
   EigenLayer core smart contracts, AVS framework, EigenSDK in Go and TypeScript,
   EigenCloud CLI, and language SDKs for EigenCompute / EigenDA / EigenAI.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Restaking
   - AVS
