@@ -153,6 +153,12 @@ apis:
       - type: Documentation
         url: https://docs.eigencloud.xyz/products/eigenai/
 common:
+  - type: IssueTracker
+    url: https://github.com/Layr-Labs/eigenlayer-contracts/issues
+  - type: Releases
+    url: https://github.com/Layr-Labs/eigenlayer-contracts/releases
+  - type: ContributionGuide
+    url: https://github.com/Layr-Labs/eigenlayer-contracts/blob/main/CONTRIBUTING.md
   - type: DomainSecurity
     url: security/eigenlayer-domain-security.yml
   - type: Website
