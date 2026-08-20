@@ -145,6 +145,11 @@ apis:
     humanURL: https://docs.eigencloud.xyz/products/eigenai/
     baseURL: https://docs.eigencloud.xyz/products/eigenai/
     tags:
+      - Artificial Intelligence
+      - Inference
+      - OpenAI-Compatible
+      - Verifiable
+    tags_raw:
       - AI
       - Inference
       - OpenAI-Compatible
