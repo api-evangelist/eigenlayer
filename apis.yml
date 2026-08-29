@@ -11,6 +11,17 @@ description: >-
   inference) under the EigenCloud brand. Developer surface includes the
   EigenLayer core smart contracts, AVS framework, EigenSDK in Go and TypeScript,
   EigenCloud CLI, and language SDKs for EigenCompute / EigenDA / EigenAI.
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: unknown
