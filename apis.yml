@@ -80,6 +80,11 @@ apis:
       - SDK
       - Go
       - AVS
+      - Operator
+    tags_raw:
+      - SDK
+      - Go
+      - AVS
       - Operators
     properties:
       - type: Repository
@@ -108,6 +113,10 @@ apis:
     baseURL: https://github.com/Layr-Labs/eigenlayer-cli
     tags:
       - CLI
+      - Operator
+      - Tooling
+    tags_raw:
+      - CLI
       - Operators
       - Tooling
     properties:
@@ -123,6 +132,10 @@ apis:
     humanURL: https://docs.eigencloud.xyz/products/eigenda/
     baseURL: https://github.com/Layr-Labs/eigenda
     tags:
+      - Data Availability
+      - Rollup
+      - AVS
+    tags_raw:
       - Data Availability
       - Rollups
       - AVS
