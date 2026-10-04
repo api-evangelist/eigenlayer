@@ -13,14 +13,21 @@ description: >-
   EigenCloud CLI, and language SDKs for EigenCompute / EigenDA / EigenAI.
 deliveryModel:
   model: unknown
+  license_evidence:
+    not_product:
+    - layr-labs/eigenda
+    - layr-labs/eigenlayer-cli
+    - layr-labs/eigenlayer-contracts
+    - layr-labs/eigenlayer-sdk
+    - layr-labs/eigensdk-go
   open_source: unknown
   commercial: false
   callable_host: false
   label: Delivery model not determined — needs a product licence on record
   confidence: low
   source:
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: free
