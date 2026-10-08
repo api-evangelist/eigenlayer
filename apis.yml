@@ -190,6 +190,12 @@ apis:
       - type: Documentation
         url: https://docs.eigencloud.xyz/products/eigenai/
 common:
+  - type: Plans
+    url: plans/eigenlayer-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/eigenlayer-rate-limits.yml
+  - type: FinOps
+    url: finops/eigenlayer-finops.yml
   - type: IssueTracker
     url: https://github.com/Layr-Labs/eigenlayer-contracts/issues
   - type: Releases
