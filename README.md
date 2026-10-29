@@ -1,4 +1,4 @@
-# eigenlayer
+# EigenLayer
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,4 +64,126 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-EigenLayer — restaking + AVS (actively validated services)
+EigenLayer is a restaking protocol on Ethereum operated by Layr Labs that lets stakers re-use staked ETH (or liquid-staking tokens) to secure additional off-chain services called Actively Validated Services (AVSs). The team has since unified the restaking layer with EigenDA (data availability), EigenCompute (verifiable off-chain compute), and EigenAI (deterministic inference) under the EigenCloud brand. Developer surface includes the EigenLayer core smart contracts, AVS framework, EigenSDK in Go and TypeScript, EigenCloud CLI, and language SDKs for EigenCompute / EigenDA / EigenAI.
+
+**Areas:** Restaking · AVS · Ethereum · Data Availability · Verifiable Compute · Cryptocurrency · Web3
+
+## EigenLayer on APIs.io
+
+Everything profiled for EigenLayer is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/eigenlayer/](https://apis.io/providers/eigenlayer/)** — or go straight to one of the APIs or properties below.
+
+### APIs (7)
+
+- [EigenLayer Core Contracts](https://apis.io/apis/eigenlayer/eigenlayer-contracts/) — Solidity smart contracts that implement the EigenLayer restaking protocol - StrategyManager, DelegationManager, EigenPodManager, AVSDirectory, and the…
+- [EigenSDK (Go)](https://apis.io/apis/eigenlayer/eigensdk-go/) — Go SDK for building AVS operator software and AVS-side services on top of EigenLayer. Provides typed bindings for the core contracts, BLS aggregation…
+- [EigenSDK (TypeScript)](https://apis.io/apis/eigenlayer/eigensdk-ts/) — TypeScript SDK for interacting with the EigenLayer restaking protocol and AVS contracts from Node.js and browser apps - typed contract clients, operator and…
+- [EigenLayer CLI](https://apis.io/apis/eigenlayer/eigenlayer-cli/) — Operator-facing command-line tool for keys, operator registration, delegation, AVS opt-in, and node-runner administration on EigenLayer.
+- [EigenDA](https://apis.io/apis/eigenlayer/eigenda/) — EigenDA is the data-availability service secured by EigenLayer restakers. Provides client libraries and a disperser API for posting and retrieving blobs of…
+- [EigenCompute SDK & CLI](https://apis.io/apis/eigenlayer/eigencompute/) — EigenCompute lets developers run arbitrary code in any language, with the execution secured by restakers and the result attested on-chain. Ships an SDK and…
+- [EigenAI](https://apis.io/apis/eigenlayer/eigenai/) — EigenAI exposes deterministic, verifiable LLM inference over an OpenAI-compatible API surface, with execution and provenance secured by EigenLayer restakers.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [EigenDA Streaming Surface](https://apis.io/asyncapis/eigenlayer/eigenlayer-streaming-asyncapi/)
+
+#### Event channels (1)
+
+Individual events and webhooks the provider emits.
+
+- [disperser.Disperser/DisperseBlobAuthenticated](https://apis.io/channels/eigenlayer/disperser-disperser-disperseblobauthenticated/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [EigenLayer — asyncapi rules](https://apis.io/rules/eigenlayer/eigenlayer-asyncapi-spectral-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Eigenlayer Domain Security](https://apis.io/security/eigenlayer/eigenlayer-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Eigenlayer Plans Pricing](https://apis.io/plans/eigenlayer/eigenlayer-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Eigenlayer Rate Limits](https://apis.io/rate-limits/eigenlayer/eigenlayer-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Eigenlayer Finops](https://apis.io/finops/eigenlayer/eigenlayer-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.eigenlayer.xyz/)
+- [Documentation](https://docs.eigencloud.xyz/)
+
+## API Evangelist rating
+
+**Kin Score 24.4** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 39.6 |
+| Contract governance | 11.4 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 14.3 |
+| Access clarity | 5.3 |
+
+**Agent readiness 14.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 5.9** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/eigenlayer/](https://apis.io/providers/eigenlayer/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for EigenLayer: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/eigenlayer/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
